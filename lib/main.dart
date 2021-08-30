@@ -27,7 +27,7 @@ class App extends StatelessWidget {
                 accentColor: Colors.yellowAccent
             ),
             debugShowCheckedModeBanner: false,
-            home: HomePage(title: 'OptionCar')
+            home: WelcomeScreen()
           );
         }
       },

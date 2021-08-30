@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:option_car/homepage.dart';
 import 'package:option_car/login.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -26,7 +27,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => LoginScreen()),
+      MaterialPageRoute(builder: (_) => HomePage(title: 'OPTION CAR')),
     );
   }
 
