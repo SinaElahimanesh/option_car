@@ -27,6 +27,8 @@ dependencies:
   introduction_screen: ^2.1.0
   flutter_login: ^2.2.1
   custom_navigation_bar: ^0.8.2
+  gradient_widgets: ^0.6.0
+  flutter_svg: ^0.22.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -58,6 +60,23 @@ flutter:
     - assets/images/img3.jpeg
     - assets/images/fullscreen.jpeg
     - assets/images/logo.png
+    - assets/images/background.png
+    - assets/images/cars/samand.png
+    - assets/images/cars/206.png
+    - assets/images/cars/iran_khodro.png
+    - assets/images/cars/saipa.png
+    - assets/images/cars/saina.png
+    - assets/images/cars/pride.png
+    - assets/images/options/ayne.png
+    - assets/images/options/zabt.png
+    - assets/images/car.png
+    - assets/images/thunderbolt.png
+    - assets/images/tool.png
+    - assets/images/discount.png
+    - assets/images/categories/gear-shift.svg
+    - assets/images/categories/Glass.svg
+    - assets/images/categories/Kafi.svg
+    - assets/images/categories/lens.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -70,10 +89,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: vazir
+      fonts:
+        - asset: assets/fonts/vazir.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
