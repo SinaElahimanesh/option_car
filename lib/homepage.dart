@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:option_car/homeMenu.dart';
 import 'package:option_car/login.dart';
+import 'package:option_car/product.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key, required this.title}) : super(key: key);
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     List <Widget> _menus = <Widget>[
       homeMenu(context),
-      Center(child: Text('tab2')),
+      productPage(context),
       Center(child: Text('tab3')),
       Center(child: Text('tab4')),
       Center(child: Text('tab5')),
@@ -32,10 +33,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       // extendBody for floating bar get better perfomance
       extendBody: true,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {  },
-        backgroundColor: const Color(0xffD17A17),
-        child: Icon(Icons.search_rounded),
+      floatingActionButton: Visibility(
+        child: FloatingActionButton(
+          onPressed: () {  },
+          backgroundColor: const Color(0xffD17A17),
+          child: Icon(Icons.search_rounded),
+        ),
+        visible: _currentIndex==0?true:false,
       ),
       backgroundColor: Colors.white,
       body: Container(

@@ -1,0 +1,11 @@
+<svg id="build_circle_black_24dp" xmlns="http://www.w3.org/2000/svg" width="30.034" height="30.5" viewBox="0 0 30.034 30.5">
+  <g id="Group_2" data-name="Group 2" transform="translate(0 0.466)">
+    <rect id="Rectangle_3" data-name="Rectangle 3" width="30.034" height="30.034" fill="none"/>
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="30.034" height="30.034" fill="none"/>
+  </g>
+  <g id="Group_4" data-name="Group 4" transform="translate(1.428)">
+    <g id="Group_3" data-name="Group 3">
+      <path id="Path_20" data-name="Path 20" d="M16.087,2A14.087,14.087,0,1,0,30.173,16.087,14.092,14.092,0,0,0,16.087,2Zm6.4,19.51-.972.972a1.4,1.4,0,0,1-1.986,0l-4.3-4.3A4.873,4.873,0,0,1,9.3,11.269l3.31,3.31,1.986-1.986-3.324-3.31a4.873,4.873,0,0,1,6.916,5.93l4.3,4.3A1.42,1.42,0,0,1,22.482,21.51Z" transform="translate(-2 -2)" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>

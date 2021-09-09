@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:option_car/models/option.dart';
 import '../homeMenu.dart';
 
@@ -142,7 +143,12 @@ Widget optionCard(Option option,
                       Text('نصب در محل', style: TextStyle(
                           color: Colors.black87, fontSize: 9.0, fontWeight: FontWeight.bold, fontFamily: 'vazir'
                       ),),
-                      Image.asset('assets/images/tool.png', width: 15.0),
+                      SvgPicture.asset(
+                        'images/inPlace.svg',
+                        semanticsLabel: 'نصب در محل',
+                        width: 15,
+                        color: Colors.black,
+                      )
                     ],
                   )
               ),
@@ -164,7 +170,12 @@ Widget optionCard(Option option,
                       Text('تحویل فوری', style: TextStyle(
                           color: Colors.black87, fontSize: 9.0, fontWeight: FontWeight.bold, fontFamily: 'vazir'
                       ),),
-                      Image.asset('assets/images/thunderbolt.png', width: 15.0),
+                      SvgPicture.asset(
+                        'images/delivery.svg',
+                        semanticsLabel: 'تحویل فوری',
+                        width: 15,
+                        color: Colors.black,
+                      )
                     ],
                   )
               ),

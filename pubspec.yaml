@@ -29,6 +29,7 @@ dependencies:
   custom_navigation_bar: ^0.8.2
   gradient_widgets: ^0.6.0
   flutter_svg: ^0.22.0
+  carousel_slider: ^4.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -61,6 +62,10 @@ flutter:
     - assets/images/fullscreen.jpeg
     - assets/images/logo.png
     - assets/images/background.png
+    - assets/images/company.png
+    - assets/images/info.png
+    - assets/images/tahvil.svg
+    - assets/images/nasb.svg
     - assets/images/cars/samand.png
     - assets/images/cars/206.png
     - assets/images/cars/iran_khodro.png
@@ -70,8 +75,8 @@ flutter:
     - assets/images/options/ayne.png
     - assets/images/options/zabt.png
     - assets/images/car.png
-    - assets/images/thunderbolt.png
-    - assets/images/tool.png
+    - assets/images/delivery.svg
+    - assets/images/inPlace.svg
     - assets/images/discount.png
     - assets/images/categories/gear-shift.svg
     - assets/images/categories/Glass.svg
