@@ -3,6 +3,7 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:option_car/homeMenu.dart';
 import 'package:option_car/login.dart';
 import 'package:option_car/product.dart';
+import 'package:option_car/profileMenu.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key, required this.title}) : super(key: key);
@@ -25,13 +26,61 @@ class _HomePageState extends State<HomePage> {
     List <Widget> _menus = <Widget>[
       homeMenu(context),
       productPage(context),
-      Center(child: Text('tab3')),
+      profilePage(),
       Center(child: Text('tab4')),
       Center(child: Text('tab5')),
     ];
 
     return Scaffold(
-      // extendBody for floating bar get better perfomance
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        title: Padding(
+          padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 50,
+                      child: FlatButton(
+                        child: Icon(Icons.account_circle, color: const Color(0xff707070)),
+                        onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context) => loginPage()));},
+                      ),
+                    ),
+                    Container(
+                        width: 50,
+                        child: FlatButton(
+                          child: Icon(Icons.shopping_cart, color: const Color(0xff707070)),
+                          onPressed: () { },
+                        )
+                    ),
+                  ],
+                ),
+                Padding(
+                    padding: EdgeInsets.only(right: 30),
+                  child: Image(
+                    image: AssetImage('./assets/images/logo.png'),
+                    width: 70.0,
+                  ),
+                ),
+                Container(
+                  width: 50,
+                  child: FlatButton(
+                    child: Icon(Icons.menu, color: const Color(0xff707070)),
+                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context) => profilePage()));},
+                  ),
+                )
+              ],
+          ),
+        ),
+        centerTitle: true,
+        shadowColor: Colors.white,
+      ),
       extendBody: true,
       floatingActionButton: Visibility(
         child: FloatingActionButton(
@@ -43,68 +92,10 @@ class _HomePageState extends State<HomePage> {
       ),
       backgroundColor: Colors.white,
       body: Container(
-        child: Column(
-          children: [
-            Container(
-                height: 60.0,
-                color: Colors.white,
-                padding: EdgeInsets.fromLTRB(0, 10.0, 4.0, 0),
-                child: IntrinsicHeight(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.fromLTRB(20, 0, 5, 0),
-                              child: IconButton(icon: new Icon(Icons.account_circle), color: const Color(0xff707070),
-                              onPressed: (){  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                builder: (context) => LoginScreen(),
-                              ));},),
-                            ),
-                            Container(
-                              padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                              child: Icon(Icons.shopping_cart, color: const Color(0xff707070)),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image(
-                              image: AssetImage('./assets/images/logo.png'),
-                              width: 70.0,
-                            ),
-                          ]),
-                        flex: 3,
-                      ),
-                      Expanded(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                                child: Icon(Icons.menu, color: const Color(0xff707070)),
-                              )
-                            ]
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-            ),
-            Container(
-              child: _menus[_currentIndex],
-            )
-          ],
-        ),
+        padding: EdgeInsets.only(top: 15),
+        child: _menus[_currentIndex],
       ),
-      bottomNavigationBar: _buildOriginDesign(),
+      // bottomNavigationBar: _buildOriginDesign(),
     );
   }
 

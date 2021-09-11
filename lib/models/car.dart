@@ -1,9 +1,9 @@
 class Car {
-  String name,
-      price,
-      image;
-  bool userLiked;
-  double discount;
+  late String name;
+  late String price;
+  late String image;
+  late bool userLiked;
+  late double discount;
 
   Car({
     required this.name,

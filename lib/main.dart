@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 import 'package:option_car/homepage.dart';
+import 'package:option_car/login.dart';
+import 'package:option_car/profileMenu.dart';
 import 'package:option_car/splash.dart';
 import 'package:option_car/welcome.dart';
 
@@ -27,7 +30,7 @@ class App extends StatelessWidget {
                 accentColor: Colors.yellowAccent
             ),
             debugShowCheckedModeBanner: false,
-            home: HomePage(title: 'OptionCar',)
+            home: WelcomeScreen()
           );
         }
       },
