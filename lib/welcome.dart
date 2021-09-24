@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:option_car/homepage.dart';
-import 'package:option_car/login.dart';
+import 'package:option_car/screens/homepage.dart';
+// import 'package:option_car/login.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -27,7 +27,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => HomePage(title: 'OPTION CAR')),
+      MaterialPageRoute(builder: (_) => HomePage()),
     );
   }
 
@@ -74,7 +74,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         height: 60,
         child: ElevatedButton(
           child: const Text(
-            'Let\s go right away!',
+            'Let\'s go right away!',
             style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
           ),
           onPressed: () => _onIntroEnd(context),
@@ -84,28 +84,28 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         PageViewModel(
           title: "Fractional shares",
           body:
-          "Instead of having to buy an entire share, invest any amount you want.",
+              "Instead of having to buy an entire share, invest any amount you want.",
           image: _buildImage('img1.jpeg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Learn as you go",
           body:
-          "Download the Stockpile app and master the market with our mini-lesson.",
+              "Download the Stockpile app and master the market with our mini-lesson.",
           image: _buildImage('img2.jpeg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Kids and teens",
           body:
-          "Kids and teens can track their stocks 24/7 and place trades that you approve.",
+              "Kids and teens can track their stocks 24/7 and place trades that you approve.",
           image: _buildImage('img3.jpeg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Full Screen Page",
           body:
-          "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
           image: _buildFullscrenImage(),
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),

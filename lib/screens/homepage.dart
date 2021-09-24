@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
-import 'package:option_car/homeMenu.dart';
-import 'package:option_car/login.dart';
-import 'package:option_car/product.dart';
-import 'package:option_car/profileMenu.dart';
+
+import 'search_screen.dart';
+import '../homeMenu.dart';
+import '../login.dart';
+import '../product.dart';
+import '../profileMenu.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key, required this.title}) : super(key: key);
+  // HomePage({Key? key, required this.title}) : super(key: key);
 
-  final String title;
+  // final String title;
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -23,7 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List <Widget> _menus = <Widget>[
+    List<Widget> _menus = <Widget>[
       homeMenu(context),
       productPage(context),
       profilePage(),
@@ -39,43 +41,50 @@ class _HomePageState extends State<HomePage> {
         ),
         title: Padding(
           padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 50,
+                    child: FlatButton(
+                      child: Icon(Icons.account_circle,
+                          color: const Color(0xff707070)),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => loginPage()));
+                      },
+                    ),
+                  ),
+                  Container(
                       width: 50,
                       child: FlatButton(
-                        child: Icon(Icons.account_circle, color: const Color(0xff707070)),
-                        onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context) => loginPage()));},
-                      ),
-                    ),
-                    Container(
-                        width: 50,
-                        child: FlatButton(
-                          child: Icon(Icons.shopping_cart, color: const Color(0xff707070)),
-                          onPressed: () { },
-                        )
-                    ),
-                  ],
+                        child: Icon(Icons.shopping_cart,
+                            color: const Color(0xff707070)),
+                        onPressed: () {},
+                      )),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 30),
+                child: Image(
+                  image: AssetImage('./assets/images/logo.png'),
+                  width: 70.0,
                 ),
-                Padding(
-                    padding: EdgeInsets.only(right: 30),
-                  child: Image(
-                    image: AssetImage('./assets/images/logo.png'),
-                    width: 70.0,
-                  ),
+              ),
+              Container(
+                width: 50,
+                child: FlatButton(
+                  child: Icon(Icons.menu, color: const Color(0xff707070)),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => profilePage()));
+                  },
                 ),
-                Container(
-                  width: 50,
-                  child: FlatButton(
-                    child: Icon(Icons.menu, color: const Color(0xff707070)),
-                    onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context) => profilePage()));},
-                  ),
-                )
-              ],
+              )
+            ],
           ),
         ),
         centerTitle: true,
@@ -84,11 +93,18 @@ class _HomePageState extends State<HomePage> {
       extendBody: true,
       floatingActionButton: Visibility(
         child: FloatingActionButton(
-          onPressed: () {  },
+          onPressed: () {
+            Navigator.of(context).push(
+              PageRouteBuilder(
+                opaque: false, // set to false
+                pageBuilder: (_, __, ___) => SearchScreen(),
+              ),
+            );
+          },
           backgroundColor: const Color(0xffD17A17),
           child: Icon(Icons.search_rounded),
         ),
-        visible: _currentIndex==0?true:false,
+        visible: _currentIndex == 0 ? true : false,
       ),
       backgroundColor: Colors.white,
       body: Container(
@@ -107,7 +123,7 @@ class _HomePageState extends State<HomePage> {
       unSelectedColor: Color(0xff6c788a),
       backgroundColor: Color(0xff040307),
       items: [
-    CustomNavigationBarItem(
+        CustomNavigationBarItem(
           icon: Icon(Icons.home),
         ),
         CustomNavigationBarItem(
