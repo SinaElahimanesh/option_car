@@ -5,8 +5,8 @@ import 'package:option_car/screens/homepage.dart';
 // import './homepage.dart';
 // import './login.dart';
 // import './profileMenu.dart';
-import './splash.dart';
-import './welcome.dart';
+// import './splash.dart';
+// import './welcome.dart';
 
 void main() => runApp(App());
 
@@ -24,7 +24,12 @@ class App extends StatelessWidget {
         // } else {
         return MaterialApp(
           theme: ThemeData(
-              primaryColor: Colors.red, accentColor: Colors.yellowAccent),
+            primaryColor: Color(0xffdb8c1c),
+            accentColor: Color(0xfff05e1d),
+            shadowColor: Color(0xff00a86c),
+            cardColor: Color(0xffc4c4c4),
+            fontFamily: "Yekan",
+          ),
           debugShowCheckedModeBanner: false,
           // home: WelcomeScreen(),
           home: HomePage(),

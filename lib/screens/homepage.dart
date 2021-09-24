@@ -80,7 +80,8 @@ class _HomePageState extends State<HomePage> {
                   child: Icon(Icons.menu, color: const Color(0xff707070)),
                   onPressed: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => profilePage()));
+                      MaterialPageRoute(builder: (context) => profilePage()),
+                    );
                   },
                 ),
               )
@@ -96,13 +97,19 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             Navigator.of(context).push(
               PageRouteBuilder(
-                opaque: false, // set to false
+                opaque: false,
                 pageBuilder: (_, __, ___) => SearchScreen(),
               ),
             );
           },
           backgroundColor: const Color(0xffD17A17),
-          child: Icon(Icons.search_rounded),
+          // child:
+          // Hero(
+          // tag: "search-icon",
+          child: Icon(
+            Icons.search_rounded,
+          ),
+          // ),
         ),
         visible: _currentIndex == 0 ? true : false,
       ),

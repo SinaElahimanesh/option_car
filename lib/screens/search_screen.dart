@@ -1,14 +1,150 @@
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {
-  const SearchScreen({Key? key}) : super(key: key);
+  final hotSearches = [
+    "آینه بغل پراید",
+    "ضبط logic",
+    "شیشه دودی تیبا",
+    "ضبط آئودی",
+    "کفی زانتیا",
+  ];
 
   @override
   Widget build(BuildContext context) {
+    final _mediaQuery = MediaQuery.of(context);
+    final _theme = Theme.of(context);
     return Scaffold(
       backgroundColor: Colors.black.withOpacity(0.8),
-      body: Center(
-        child: Text("Search modafather."),
+      body: Container(
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  icon: Icon(
+                    Icons.close_rounded,
+                    color: _theme.accentColor,
+                    size: _mediaQuery.size.width * 0.07,
+                  ),
+                ),
+                // Spacer(),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: _mediaQuery.size.width * 0.1,
+                  ),
+                  child: TextField(
+                    textInputAction: TextInputAction.search,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.search_rounded,
+                        color: Colors.white,
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 2),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 2),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: _mediaQuery.size.width * 0.1,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "جستجو های محبوب",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: _mediaQuery.textScaleFactor * 20,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Icon(
+                        Icons.local_fire_department_outlined,
+                        color: _theme.primaryColor,
+                        size: _mediaQuery.size.width * 0.08,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 40,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (_, i) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 5,
+                        ),
+                        child: Chip(
+                          label: Text(
+                            hotSearches[i],
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            textDirection: TextDirection.rtl,
+                          ),
+                          backgroundColor: Color(0xff333333),
+                          side: BorderSide(
+                            width: 0.3,
+                            color: Colors.white,
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                          ),
+                        ),
+                      );
+                    },
+                    itemCount: hotSearches.length,
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: _mediaQuery.size.width * 0.1,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "آپشن های داغ",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: _mediaQuery.textScaleFactor * 20,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      Icon(
+                        Icons.trending_up_rounded,
+                        color: _theme.primaryColor,
+                        size: _mediaQuery.size.width * 0.08,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
