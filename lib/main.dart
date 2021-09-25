@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:option_car/screens/homepage.dart';
-// import 'package:introduction_screen/introduction_screen.dart';
 
-// import './homepage.dart';
-// import './login.dart';
-// import './profileMenu.dart';
-// import './splash.dart';
-// import './welcome.dart';
+import './homeMenu.dart';
 
 void main() => runApp(App());
 
@@ -31,8 +25,7 @@ class App extends StatelessWidget {
             fontFamily: "Yekan",
           ),
           debugShowCheckedModeBanner: false,
-          // home: WelcomeScreen(),
-          home: HomePage(),
+          home: HomeScreen(),
         );
         // }
       },

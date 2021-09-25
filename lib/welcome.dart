@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:option_car/screens/homepage.dart';
+import 'package:option_car/homeMenu.dart';
 // import 'package:option_car/login.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -27,7 +27,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => HomePage()),
+      MaterialPageRoute(builder: (_) => HomeScreen()),
     );
   }
 
