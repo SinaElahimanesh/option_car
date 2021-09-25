@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import './login.dart';
-import './models/category.dart';
-import './profileMenu.dart';
-import './screens/search_screen.dart';
-import 'cards/carItem.dart';
-import 'cards/optionsCard.dart';
-import 'models/car.dart';
-import 'models/option.dart';
-import 'cards/optionItem.dart';
+import '../login.dart';
+import '../models/category.dart';
+import '../profileMenu.dart';
+import 'search_screen.dart';
+import '../cards/carItem.dart';
+import '../cards/optionsCard.dart';
+import '../models/car.dart';
+import '../models/option.dart';
+import '../cards/optionItem.dart';
 
 class HomeScreen extends StatelessWidget {
   List<Category> categories = [
@@ -121,6 +121,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _mediaQuery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -191,13 +193,9 @@ class HomeScreen extends StatelessWidget {
           );
         },
         backgroundColor: const Color(0xffD17A17),
-        // child:
-        // Hero(
-        // tag: "search-icon",
         child: Icon(
           Icons.search_rounded,
         ),
-        // ),
       ),
       body: SizedBox(
         height: MediaQuery.of(context).size.height - 100,
@@ -216,68 +214,58 @@ class HomeScreen extends StatelessWidget {
                 textAlign: TextAlign.end,
               ),
             ),
-            optionsCarousel(onViewMore: () {}, items: <Widget>[
-              optionCard(options[0], onTapped: () {
-                //   Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) {
-                //         return new ProductPage(
-                //           productData: drinks[0],
-                //         );
-                //       },
-                //     ),
-                //   );
-              }, onLike: () {}, imgWidth: 80),
-              optionCard(options[1], onTapped: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) {
-                //       return new ProductPage(
-                //         productData: drinks[1],
-                //       );
-                //     },
-                //   ),
-                // );
-              }, onLike: () {}, imgWidth: 75),
-              optionCard(options[2], onTapped: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) {
-                //       return new ProductPage(
-                //         productData: drinks[2],
-                //       );
-                //     },
-                //   ),
-                // );
-              }, imgWidth: 110, onLike: () {}),
-              optionCard(options[3], onTapped: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) {
-                //       return new ProductPage(
-                //         productData: drinks[3],
-                //       );
-                //     },
-                //   ),
-                // );
-              }, onLike: () {}, imgWidth: 60),
-            ]),
-            // optionCard(foods[0], onTapped: () {
-            //   // Navigator.push(
-            //   //   context,
-            //   //   MaterialPageRoute(
-            //   //     builder: (context) {
-            //   //       return new ProductPage(
-            //   //         productData: foods[0],
-            //   //       );
-            //   //     },
-            //   //   ),
-            //   // );
-            // }, onLike: () {}, imgWidth: 40),
+            optionsCarousel(
+              onViewMore: () {},
+              items: <Widget>[
+                SizedBox(
+                  width: 20,
+                ),
+                optionCard(
+                  options[0],
+                  onTapped: () {},
+                  onLike: () {},
+                  imgWidth: 80,
+                  theme: _theme,
+                  mediaQuery: _mediaQuery,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                optionCard(
+                  options[1],
+                  onTapped: () {},
+                  onLike: () {},
+                  imgWidth: 75,
+                  theme: _theme,
+                  mediaQuery: _mediaQuery,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                optionCard(
+                  options[2],
+                  onTapped: () {},
+                  imgWidth: 110,
+                  onLike: () {},
+                  theme: _theme,
+                  mediaQuery: _mediaQuery,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                optionCard(
+                  options[3],
+                  onTapped: () {},
+                  onLike: () {},
+                  imgWidth: 60,
+                  theme: _theme,
+                  mediaQuery: _mediaQuery,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+              ],
+            ),
             Container(
               padding: EdgeInsets.fromLTRB(0, 0, 20, 20),
               child: Text(
@@ -297,60 +285,20 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    optionItem(categories[0], onTapped: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) {
-                      //       return new ProductPage(
-                      //         productData: foods[0],
-                      //       );
-                      //     },
-                      //   ),
-                      // );
-                    }, onLike: () {}, imgWidth: 40),
-                    optionItem(categories[1], onTapped: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) {
-                      //       return new ProductPage(
-                      //         productData: foods[1],
-                      //       );
-                      //     },
-                      //   ),
-                      // );
-                    }, imgWidth: 250, onLike: () {})
+                    optionItem(categories[0],
+                        onTapped: () {}, onLike: () {}, imgWidth: 40),
+                    optionItem(categories[1],
+                        onTapped: () {}, imgWidth: 250, onLike: () {})
                   ],
                 ),
                 Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    optionItem(categories[2], onTapped: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) {
-                      //       return new ProductPage(
-                      //         productData: foods[2],
-                      //       );
-                      //     },
-                      //   ),
-                      // );
-                    }, imgWidth: 200, onLike: () {}),
-                    optionItem(categories[3], onTapped: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) {
-                      //       return new ProductPage(
-                      //         productData: foods[3],
-                      //       );
-                      //     },
-                      //   ),
-                      // );
-                    }, onLike: () {}, imgWidth: 40)
+                    optionItem(categories[2],
+                        onTapped: () {}, imgWidth: 200, onLike: () {}),
+                    optionItem(categories[3],
+                        onTapped: () {}, onLike: () {}, imgWidth: 40)
                   ],
                 )
               ]),
@@ -383,54 +331,14 @@ class HomeScreen extends StatelessWidget {
                 'گروه ایران خودرو', 'assets/images/cars/iran_khodro.png',
                 onViewMore: () {},
                 items: <Widget>[
-                  carItem(cars1[0], onTapped: () {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) {
-                    //         return new ProductPage(
-                    //           productData: drinks[0],
-                    //         );
-                    //       },
-                    //     ),
-                    //   );
-                  }, onLike: () {}, imgWidth: 80),
-                  carItem(cars1[1], onTapped: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return new ProductPage(
-                    //         productData: drinks[1],
-                    //       );
-                    //     },
-                    //   ),
-                    // );
-                  }, onLike: () {}, imgWidth: 75),
-                  carItem(cars1[2], onTapped: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return new ProductPage(
-                    //         productData: drinks[2],
-                    //       );
-                    //     },
-                    //   ),
-                    // );
-                  }, imgWidth: 110, onLike: () {}),
-                  carItem(cars1[3], onTapped: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return new ProductPage(
-                    //         productData: drinks[3],
-                    //       );
-                    //     },
-                    //   ),
-                    // );
-                  }, onLike: () {}, imgWidth: 60),
+                  carItem(cars1[0],
+                      onTapped: () {}, onLike: () {}, imgWidth: 80),
+                  carItem(cars1[1],
+                      onTapped: () {}, onLike: () {}, imgWidth: 75),
+                  carItem(cars1[2],
+                      onTapped: () {}, imgWidth: 110, onLike: () {}),
+                  carItem(cars1[3],
+                      onTapped: () {}, onLike: () {}, imgWidth: 60),
                 ]),
             Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
             carsCarousel(
@@ -438,54 +346,11 @@ class HomeScreen extends StatelessWidget {
               'assets/images/cars/saipa.png',
               onViewMore: () {},
               items: <Widget>[
-                carItem(cars2[0], onTapped: () {
-                  //   Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) {
-                  //         return new ProductPage(
-                  //           productData: drinks[0],
-                  //         );
-                  //       },
-                  //     ),
-                  //   );
-                }, onLike: () {}, imgWidth: 80),
-                carItem(cars2[1], onTapped: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) {
-                  //       return new ProductPage(
-                  //         productData: drinks[1],
-                  //       );
-                  //     },
-                  //   ),
-                  // );
-                }, onLike: () {}, imgWidth: 75),
-                carItem(cars2[2], onTapped: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) {
-                  //       return new ProductPage(
-                  //         productData: drinks[2],
-                  //       );
-                  //     },
-                  //   ),
-                  // );
-                }, imgWidth: 110, onLike: () {}),
-                carItem(cars2[3], onTapped: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) {
-                  //       return new ProductPage(
-                  //         productData: drinks[3],
-                  //       );
-                  //     },
-                  //   ),
-                  // );
-                }, onLike: () {}, imgWidth: 60),
+                carItem(cars2[0], onTapped: () {}, onLike: () {}, imgWidth: 80),
+                carItem(cars2[1], onTapped: () {}, onLike: () {}, imgWidth: 75),
+                carItem(cars2[2],
+                    onTapped: () {}, imgWidth: 110, onLike: () {}),
+                carItem(cars2[3], onTapped: () {}, onLike: () {}, imgWidth: 60),
               ],
             ),
           ],

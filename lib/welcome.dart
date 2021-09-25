@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:option_car/homeMenu.dart';
-// import 'package:option_car/login.dart';
+
+import './screens/home_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -11,7 +11,9 @@ class WelcomeScreen extends StatelessWidget {
     return MaterialApp(
       title: 'Welcome to OptionCar',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
       home: OnBoardingPage(),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './homeMenu.dart';
+import 'screens/home_screen.dart';
 
 void main() => runApp(App());
 
@@ -21,7 +21,8 @@ class App extends StatelessWidget {
             primaryColor: Color(0xffdb8c1c),
             accentColor: Color(0xfff05e1d),
             shadowColor: Color(0xff00a86c),
-            cardColor: Color(0xffc4c4c4),
+            cardColor: Color(0xffeaeaea),
+            hintColor: Color(0xfff52d00),
             fontFamily: "Yekan",
           ),
           debugShowCheckedModeBanner: false,
