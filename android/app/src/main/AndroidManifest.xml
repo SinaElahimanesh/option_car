@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.optioncar.option_car">
+    package="com.resteam.option_car">
+   <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="option_car"
+        android:label="Option Car"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

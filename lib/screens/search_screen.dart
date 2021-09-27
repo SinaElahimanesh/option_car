@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:option_car/models/option.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/option_provider.dart';
+import '../widgets/optionsCard.dart';
 
 class SearchScreen extends StatelessWidget {
   final hotSearches = [
@@ -9,10 +14,54 @@ class SearchScreen extends StatelessWidget {
     "کفی زانتیا",
   ];
 
+  // List<Option> options = [
+  //   Option(
+  //       name: "ضبط مدل fs logic",
+  //       imageURL: 'assets/images/options/zabt.png',
+  //       hasDiscount: true,
+  //       discountPercent: 15,
+  //       lastPrice: 450000,
+  //       newPrice: 300000,
+  //       cars: ['۲۰۶', 'رانا', 'سورن', 'دنا'],
+  //       hasImmediateDelivery: true,
+  //       hasInPlaceInstallation: true),
+  //   Option(
+  //       name: "آینه بغل تاشو",
+  //       imageURL: 'assets/images/options/ayne.png',
+  //       hasDiscount: true,
+  //       discountPercent: 15,
+  //       lastPrice: 300000,
+  //       newPrice: 250000,
+  //       cars: ['۲۰۷', 'پراید'],
+  //       hasImmediateDelivery: true,
+  //       hasInPlaceInstallation: false),
+  //   Option(
+  //       name: "ضبط مدل fs logic",
+  //       imageURL: 'assets/images/options/zabt.png',
+  //       hasDiscount: true,
+  //       discountPercent: 15,
+  //       lastPrice: 450000,
+  //       newPrice: 300000,
+  //       cars: ['۲۰۶', 'رانا', 'سورن', 'دنا'],
+  //       hasImmediateDelivery: true,
+  //       hasInPlaceInstallation: true),
+  //   Option(
+  //       name: "آینه بغل تاشو",
+  //       imageURL: 'assets/images/options/ayne.png',
+  //       hasDiscount: true,
+  //       discountPercent: 15,
+  //       lastPrice: 300000,
+  //       newPrice: 250000,
+  //       cars: ['۲۰۷', 'پراید'],
+  //       hasImmediateDelivery: true,
+  //       hasInPlaceInstallation: false)
+  // ];
+
   @override
   Widget build(BuildContext context) {
     final _mediaQuery = MediaQuery.of(context);
     final _theme = Theme.of(context);
+    final _provider = Provider.of<OptionProvider>(context);
     return Scaffold(
       backgroundColor: Colors.black.withOpacity(0.8),
       body: Container(
@@ -141,6 +190,28 @@ class SearchScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                // Expanded(
+                //   child:
+                Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 30,
+                    ),
+                    itemBuilder: (_, i) {
+                      return optionCard(
+                        _provider.options[i],
+                        imgWidth: 50,
+                        theme: _theme,
+                        mediaQuery: _mediaQuery,
+                      );
+                    },
+                    itemCount: _provider.options.length,
+                  ),
+                ),
+                // ),
               ],
             ),
           ),

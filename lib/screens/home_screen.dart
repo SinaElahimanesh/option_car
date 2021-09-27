@@ -1,126 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/option_provider.dart';
 import '../login.dart';
-import '../models/category.dart';
 import '../profileMenu.dart';
 import 'search_screen.dart';
-import '../cards/carItem.dart';
-import '../cards/optionsCard.dart';
-import '../models/car.dart';
-import '../models/option.dart';
-import '../cards/optionItem.dart';
+import '../widgets/carItem.dart';
+import '../widgets/optionsCard.dart';
+import '../widgets/optionItem.dart';
 
 class HomeScreen extends StatelessWidget {
-  List<Category> categories = [
-    Category(
-        name: 'شیشه (عادی و دودی)',
-        imageURL: 'assets/images/categories/Glass.svg'),
-    Category(name: 'کف پوش', imageURL: 'assets/images/categories/Kafi.svg'),
-    Category(name: 'دوربین', imageURL: 'assets/images/categories/lens.svg'),
-    Category(
-        name: 'گیربکس اتوماتیک',
-        imageURL: 'assets/images/categories/gear-shift.svg'),
-  ];
-
-  List<Option> options = [
-    Option(
-        name: "ضبط مدل fs logic",
-        imageURL: 'assets/images/options/zabt.png',
-        hasDiscount: true,
-        discountPercent: 15,
-        lastPrice: 450000,
-        newPrice: 300000,
-        cars: ['۲۰۶', 'رانا', 'سورن', 'دنا'],
-        hasImmediateDelivery: true,
-        hasInPlaceInstallation: true),
-    Option(
-        name: "آینه بغل تاشو",
-        imageURL: 'assets/images/options/ayne.png',
-        hasDiscount: true,
-        discountPercent: 15,
-        lastPrice: 300000,
-        newPrice: 250000,
-        cars: ['۲۰۷', 'پراید'],
-        hasImmediateDelivery: true,
-        hasInPlaceInstallation: false),
-    Option(
-        name: "ضبط مدل fs logic",
-        imageURL: 'assets/images/options/zabt.png',
-        hasDiscount: true,
-        discountPercent: 15,
-        lastPrice: 450000,
-        newPrice: 300000,
-        cars: ['۲۰۶', 'رانا', 'سورن', 'دنا'],
-        hasImmediateDelivery: true,
-        hasInPlaceInstallation: true),
-    Option(
-        name: "آینه بغل تاشو",
-        imageURL: 'assets/images/options/ayne.png',
-        hasDiscount: true,
-        discountPercent: 15,
-        lastPrice: 300000,
-        newPrice: 250000,
-        cars: ['۲۰۷', 'پراید'],
-        hasImmediateDelivery: true,
-        hasInPlaceInstallation: false)
-  ];
-
-  List<Car> cars1 = [
-    Car(
-        name: "پژو ۲۰۶",
-        image: "assets/images/cars/206.png",
-        price: "\$45.12",
-        userLiked: true,
-        discount: 2),
-    Car(
-        name: "سمند",
-        image: "assets/images/cars/samand.png",
-        price: "\$28.00",
-        userLiked: false,
-        discount: 5.2),
-    Car(
-        name: "پژو ۲۰۶",
-        image: "assets/images/cars/206.png",
-        price: "\$45.12",
-        userLiked: true,
-        discount: 2),
-    Car(
-        name: "سمند",
-        image: "assets/images/cars/samand.png",
-        price: "\$28.00",
-        userLiked: false,
-        discount: 5.2),
-  ];
-
-  List<Car> cars2 = [
-    Car(
-        name: "پراید",
-        image: "assets/images/cars/pride.png",
-        price: "\$45.12",
-        userLiked: true,
-        discount: 2),
-    Car(
-        name: "ساینا",
-        image: "assets/images/cars/saina.png",
-        price: "\$28.00",
-        userLiked: false,
-        discount: 5.2),
-    Car(
-        name: "پراید",
-        image: "assets/images/cars/pride.png",
-        price: "\$45.12",
-        userLiked: true,
-        discount: 2),
-    Car(
-        name: "ساینا",
-        image: "assets/images/cars/saina.png",
-        price: "\$28.00",
-        userLiked: false,
-        discount: 5.2),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final _provider = Provider.of<OptionProvider>(context);
     final _theme = Theme.of(context);
     final _mediaQuery = MediaQuery.of(context);
     return Scaffold(
@@ -221,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                   width: 20,
                 ),
                 optionCard(
-                  options[0],
+                  _provider.options[0],
                   onTapped: () {},
                   onLike: () {},
                   imgWidth: 80,
@@ -232,7 +124,7 @@ class HomeScreen extends StatelessWidget {
                   width: 20,
                 ),
                 optionCard(
-                  options[1],
+                  _provider.options[1],
                   onTapped: () {},
                   onLike: () {},
                   imgWidth: 75,
@@ -243,7 +135,7 @@ class HomeScreen extends StatelessWidget {
                   width: 20,
                 ),
                 optionCard(
-                  options[2],
+                  _provider.options[2],
                   onTapped: () {},
                   imgWidth: 110,
                   onLike: () {},
@@ -254,7 +146,7 @@ class HomeScreen extends StatelessWidget {
                   width: 20,
                 ),
                 optionCard(
-                  options[3],
+                  _provider.options[3],
                   onTapped: () {},
                   onLike: () {},
                   imgWidth: 60,
@@ -285,9 +177,9 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    optionItem(categories[0],
+                    optionItem(_provider.categories[0],
                         onTapped: () {}, onLike: () {}, imgWidth: 40),
-                    optionItem(categories[1],
+                    optionItem(_provider.categories[1],
                         onTapped: () {}, imgWidth: 250, onLike: () {})
                   ],
                 ),
@@ -295,9 +187,9 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    optionItem(categories[2],
+                    optionItem(_provider.categories[2],
                         onTapped: () {}, imgWidth: 200, onLike: () {}),
-                    optionItem(categories[3],
+                    optionItem(_provider.categories[3],
                         onTapped: () {}, onLike: () {}, imgWidth: 40)
                   ],
                 )
@@ -331,13 +223,13 @@ class HomeScreen extends StatelessWidget {
                 'گروه ایران خودرو', 'assets/images/cars/iran_khodro.png',
                 onViewMore: () {},
                 items: <Widget>[
-                  carItem(cars1[0],
+                  carItem(_provider.cars1[0],
                       onTapped: () {}, onLike: () {}, imgWidth: 80),
-                  carItem(cars1[1],
+                  carItem(_provider.cars1[1],
                       onTapped: () {}, onLike: () {}, imgWidth: 75),
-                  carItem(cars1[2],
+                  carItem(_provider.cars1[2],
                       onTapped: () {}, imgWidth: 110, onLike: () {}),
-                  carItem(cars1[3],
+                  carItem(_provider.cars1[3],
                       onTapped: () {}, onLike: () {}, imgWidth: 60),
                 ]),
             Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
@@ -346,11 +238,30 @@ class HomeScreen extends StatelessWidget {
               'assets/images/cars/saipa.png',
               onViewMore: () {},
               items: <Widget>[
-                carItem(cars2[0], onTapped: () {}, onLike: () {}, imgWidth: 80),
-                carItem(cars2[1], onTapped: () {}, onLike: () {}, imgWidth: 75),
-                carItem(cars2[2],
-                    onTapped: () {}, imgWidth: 110, onLike: () {}),
-                carItem(cars2[3], onTapped: () {}, onLike: () {}, imgWidth: 60),
+                carItem(
+                  _provider.cars2[0],
+                  onTapped: () {},
+                  onLike: () {},
+                  imgWidth: 80,
+                ),
+                carItem(
+                  _provider.cars2[1],
+                  onTapped: () {},
+                  onLike: () {},
+                  imgWidth: 75,
+                ),
+                carItem(
+                  _provider.cars2[2],
+                  onTapped: () {},
+                  imgWidth: 110,
+                  onLike: () {},
+                ),
+                carItem(
+                  _provider.cars2[3],
+                  onTapped: () {},
+                  onLike: () {},
+                  imgWidth: 60,
+                ),
               ],
             ),
           ],

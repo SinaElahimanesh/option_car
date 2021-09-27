@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:option_car/providers/option_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'screens/home_screen.dart';
 
@@ -16,17 +18,20 @@ class App extends StatelessWidget {
         //   return MaterialApp(
         //       home: SplashScreen(), debugShowCheckedModeBanner: false);
         // } else {
-        return MaterialApp(
-          theme: ThemeData(
-            primaryColor: Color(0xffdb8c1c),
-            accentColor: Color(0xfff05e1d),
-            shadowColor: Color(0xff00a86c),
-            cardColor: Color(0xffeaeaea),
-            hintColor: Color(0xfff52d00),
-            fontFamily: "Yekan",
+        return ChangeNotifierProvider(
+          create: (_) => OptionProvider(),
+          child: MaterialApp(
+            theme: ThemeData(
+              primaryColor: Color(0xffdb8c1c),
+              accentColor: Color(0xfff05e1d),
+              shadowColor: Color(0xff00a86c),
+              cardColor: Color(0xffeaeaea),
+              hintColor: Color(0xfff52d00),
+              fontFamily: "Yekan",
+            ),
+            debugShowCheckedModeBanner: false,
+            home: HomeScreen(),
           ),
-          debugShowCheckedModeBanner: false,
-          home: HomeScreen(),
         );
         // }
       },
