@@ -27,6 +27,7 @@ class App extends StatelessWidget {
               shadowColor: Color(0xff00a86c),
               cardColor: Color(0xffeaeaea),
               hintColor: Color(0xfff52d00),
+              highlightColor: Color(0xffc4c4c4),
               fontFamily: "Yekan",
             ),
             debugShowCheckedModeBanner: false,

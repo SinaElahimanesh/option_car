@@ -201,11 +201,12 @@ class SearchScreen extends StatelessWidget {
                       mainAxisSpacing: 30,
                     ),
                     itemBuilder: (_, i) {
-                      return optionCard(
-                        _provider.options[i],
+                      return OptionCard(
+                        option: _provider.options[i],
                         imgWidth: 50,
                         theme: _theme,
                         mediaQuery: _mediaQuery,
+                        onTapped: () {},
                       );
                     },
                     itemCount: _provider.options.length,

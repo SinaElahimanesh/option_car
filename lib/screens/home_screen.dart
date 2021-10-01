@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:option_car/product.dart';
+import 'package:option_car/screens/product_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/option_provider.dart';
@@ -41,19 +43,23 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                      width: 50,
-                      child: FlatButton(
-                        child: Icon(Icons.shopping_cart,
-                            color: const Color(0xff707070)),
-                        onPressed: () {},
-                      )),
+                    width: 50,
+                    child: FlatButton(
+                      child: Icon(Icons.shopping_cart,
+                          color: const Color(0xff707070)),
+                      onPressed: () {},
+                    ),
+                  ),
                 ],
               ),
               Padding(
                 padding: EdgeInsets.only(right: 30),
-                child: Image(
-                  image: AssetImage('./assets/images/logo.png'),
-                  width: 70.0,
+                child: Text(
+                  "insert logo here",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: _mediaQuery.textScaleFactor * 15,
+                  ),
                 ),
               ),
               Container(
@@ -112,10 +118,15 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   width: 20,
                 ),
-                optionCard(
-                  _provider.options[0],
-                  onTapped: () {},
-                  onLike: () {},
+                OptionCard(
+                  option: _provider.options[0],
+                  onTapped: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => ProductScreen(),
+                      ),
+                    );
+                  },
                   imgWidth: 80,
                   theme: _theme,
                   mediaQuery: _mediaQuery,
@@ -123,10 +134,9 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   width: 20,
                 ),
-                optionCard(
-                  _provider.options[1],
+                OptionCard(
+                  option: _provider.options[1],
                   onTapped: () {},
-                  onLike: () {},
                   imgWidth: 75,
                   theme: _theme,
                   mediaQuery: _mediaQuery,
@@ -134,21 +144,19 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   width: 20,
                 ),
-                optionCard(
-                  _provider.options[2],
+                OptionCard(
+                  option: _provider.options[2],
                   onTapped: () {},
                   imgWidth: 110,
-                  onLike: () {},
                   theme: _theme,
                   mediaQuery: _mediaQuery,
                 ),
                 SizedBox(
                   width: 20,
                 ),
-                optionCard(
-                  _provider.options[3],
+                OptionCard(
+                  option: _provider.options[3],
                   onTapped: () {},
-                  onLike: () {},
                   imgWidth: 60,
                   theme: _theme,
                   mediaQuery: _mediaQuery,

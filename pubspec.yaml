@@ -63,10 +63,9 @@ flutter:
     - assets/images/fullscreen.jpeg
     - assets/images/logo.png
     - assets/images/background.png
-    - assets/images/company.png
-    - assets/images/info.png
-    - assets/images/tahvil.svg
-    - assets/images/nasb.svg
+    - assets/images/icons/info.svg
+    - assets/images/icons/delivering.svg
+    - assets/images/icons/inPlace_Install_Button.svg
     - assets/images/cars/samand.png
     - assets/images/cars/206.png
     - assets/images/cars/iran_khodro.png
@@ -75,15 +74,17 @@ flutter:
     - assets/images/cars/pride.png
     - assets/images/options/ayne.png
     - assets/images/options/zabt.png
-    - assets/images/car.png
-    - assets/images/delivery.svg
-    - assets/images/inPlace.svg
+    - assets/images/icons/car_good_for.svg
+    - assets/images/icons/fast_delivery.svg
+    - assets/images/icons/inPlace_Install.svg
     - assets/images/discount.png
     - assets/images/categories/gear-shift.svg
     - assets/images/categories/Glass.svg
     - assets/images/categories/Kafi.svg
     - assets/images/categories/lens.svg
     - assets/images/profile/user.jpg
+    - assets/images/product_sale_indicator.png
+    - assets/images/icons/manufacturer.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
