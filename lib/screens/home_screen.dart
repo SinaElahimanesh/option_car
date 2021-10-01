@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:option_car/product.dart';
-import 'package:option_car/screens/product_screen.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/option_provider.dart';
+import 'package:option_car/models/category.dart';
+import 'package:option_car/screens/product_screen.dart';
+import 'package:option_car/widgets/persian_text.dart';
+
 import '../login.dart';
 import '../profileMenu.dart';
-import 'search_screen.dart';
+import '../providers/option_provider.dart';
 import '../widgets/carItem.dart';
-import '../widgets/optionsCard.dart';
 import '../widgets/optionItem.dart';
+import '../widgets/optionsCard.dart';
+import 'search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -179,29 +182,69 @@ class HomeScreen extends StatelessWidget {
                 textAlign: TextAlign.end,
               ),
             ),
-            SizedBox(
-              height: 130,
-              child: Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    optionItem(_provider.categories[0],
-                        onTapped: () {}, onLike: () {}, imgWidth: 40),
-                    optionItem(_provider.categories[1],
-                        onTapped: () {}, imgWidth: 250, onLike: () {})
-                  ],
-                ),
-                Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    optionItem(_provider.categories[2],
-                        onTapped: () {}, imgWidth: 200, onLike: () {}),
-                    optionItem(_provider.categories[3],
-                        onTapped: () {}, onLike: () {}, imgWidth: 40)
-                  ],
-                )
-              ]),
+            // SizedBox(
+            //   height: 130,
+            //   child: Column(children: [
+            //     Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //       children: [
+            //         optionItem(_provider.categories[0],
+            //             onTapped: () {}, onLike: () {}, imgWidth: 40),
+            //         optionItem(_provider.categories[1],
+            //             onTapped: () {}, imgWidth: 250, onLike: () {})
+            //       ],
+            //     ),
+            //     Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
+            //     Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //       children: [
+            //         optionItem(_provider.categories[2],
+            //             onTapped: () {}, imgWidth: 200, onLike: () {}),
+            //         optionItem(_provider.categories[3],
+            //             onTapped: () {}, onLike: () {}, imgWidth: 40)
+            //       ],
+            //     )
+            //   ]),
+            // ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      PopularCategory(
+                        category: _provider.categories[0],
+                        theme: _theme,
+                        mediaQuery: _mediaQuery,
+                      ),
+                      PopularCategory(
+                        category: _provider.categories[1],
+                        theme: _theme,
+                        mediaQuery: _mediaQuery,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      PopularCategory(
+                        category: _provider.categories[2],
+                        theme: _theme,
+                        mediaQuery: _mediaQuery,
+                      ),
+                      PopularCategory(
+                        category: _provider.categories[3],
+                        theme: _theme,
+                        mediaQuery: _mediaQuery,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             Container(
               child: Divider(
@@ -420,4 +463,48 @@ Widget optionsCarousel({onViewMore, required List<Widget> items}) {
                 ],
         ),
       ));
+}
+
+class PopularCategory extends StatelessWidget {
+  final Category category;
+  final ThemeData theme;
+  final MediaQueryData mediaQuery;
+  const PopularCategory({
+    Key? key,
+    required this.category,
+    required this.theme,
+    required this.mediaQuery,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: mediaQuery.size.width * 0.45,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          10,
+        ),
+        color: theme.primaryColor,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 12.5,
+          horizontal: 5,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(),
+            PersianText(category.name),
+            SvgPicture.asset(
+              category.imageURL,
+              color: Colors.black,
+              height: 18,
+              width: 18,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

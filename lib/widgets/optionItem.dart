@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'gradientItem.dart';
-import '../screens/home_screen.dart';
-import '../models/car.dart';
 import '../models/category.dart';
 
 Widget optionItem(Category category,

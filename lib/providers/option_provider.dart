@@ -7,13 +7,21 @@ import '../models/option.dart';
 class OptionProvider with ChangeNotifier {
   List<Category> categories = [
     Category(
-        name: 'شیشه (عادی و دودی)',
-        imageURL: 'assets/images/categories/Glass.svg'),
-    Category(name: 'کف پوش', imageURL: 'assets/images/categories/Kafi.svg'),
-    Category(name: 'دوربین', imageURL: 'assets/images/categories/lens.svg'),
+      name: 'شیشه (عادی و دودی)',
+      imageURL: 'assets/images/categories/Glass.svg',
+    ),
     Category(
-        name: 'گیربکس اتوماتیک',
-        imageURL: 'assets/images/categories/gear-shift.svg'),
+      name: 'کف پوش',
+      imageURL: 'assets/images/categories/Kafi.svg',
+    ),
+    Category(
+      name: 'دوربین',
+      imageURL: 'assets/images/categories/lens.svg',
+    ),
+    Category(
+      name: 'گیربکس اتوماتیک',
+      imageURL: 'assets/images/categories/gear-shift.svg',
+    ),
   ];
 
   List<Option> options = [
