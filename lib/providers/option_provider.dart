@@ -56,6 +56,26 @@ class OptionProvider with ChangeNotifier {
         newPrice: 250000,
         cars: ['۲۰۷', 'پراید'],
         hasImmediateDelivery: true,
+        hasInPlaceInstallation: false),
+    Option(
+        name: "آینه بغل تاشو",
+        imageURL: 'assets/images/options/ayne.png',
+        hasDiscount: true,
+        discountPercent: 15,
+        lastPrice: 300000,
+        newPrice: 250000,
+        cars: ['۲۰۷', 'پراید'],
+        hasImmediateDelivery: true,
+        hasInPlaceInstallation: false),
+    Option(
+        name: "آینه بغل تاشو",
+        imageURL: 'assets/images/options/ayne.png',
+        hasDiscount: true,
+        discountPercent: 15,
+        lastPrice: 300000,
+        newPrice: 250000,
+        cars: ['۲۰۷', 'پراید'],
+        hasImmediateDelivery: true,
         hasInPlaceInstallation: false)
   ];
 
