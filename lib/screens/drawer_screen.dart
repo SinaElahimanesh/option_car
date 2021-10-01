@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
-import 'package:option_car/login.dart';
-import 'package:option_car/profileMenu.dart';
 
-import 'package:option_car/screens/drawer_menu.dart';
-import 'package:option_car/screens/home_screen.dart';
-import 'package:option_car/screens/search_screen.dart';
+import '../login.dart';
+import './drawer_menu.dart';
 
 class DrawerScreen extends StatelessWidget {
   final Widget body;
-  final Widget? floatingActionButton;
+  final bool appBarBack;
   const DrawerScreen({
     Key? key,
     required this.body,
-    this.floatingActionButton,
+    this.appBarBack = false,
   }) : super(key: key);
 
   @override
@@ -28,6 +25,14 @@ class DrawerScreen extends StatelessWidget {
           appBarHeight: _mediaQuery.size.height * 0.1,
           isShadow: true,
           shadowColor: Colors.black,
+          trailing: appBarBack
+              ? IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(Icons.arrow_back_rounded),
+                )
+              : null,
           // trailing: Text("asdf"),
           // isTitleCenter: true,
           slideDirection: SlideDirection.RIGHT_TO_LEFT,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:option_car/screens/drawer_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../models/category.dart';
@@ -127,7 +128,10 @@ class HomeScreen extends StatelessWidget {
                   onTapped: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => ProductScreen(),
+                        builder: (_) => DrawerScreen(
+                          body: ProductScreen(),
+                          appBarBack: true,
+                        ),
                       ),
                     );
                   },
