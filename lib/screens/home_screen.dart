@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
-import 'package:option_car/models/category.dart';
-import 'package:option_car/screens/product_screen.dart';
-import 'package:option_car/widgets/persian_text.dart';
-
+import '../models/category.dart';
+import './product_screen.dart';
+import '../widgets/persian_text.dart';
 import '../login.dart';
 import '../profileMenu.dart';
 import '../providers/option_provider.dart';
 import '../widgets/carItem.dart';
-import '../widgets/optionItem.dart';
 import '../widgets/optionsCard.dart';
-import 'search_screen.dart';
+import './search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -20,85 +18,88 @@ class HomeScreen extends StatelessWidget {
     final _provider = Provider.of<OptionProvider>(context);
     final _theme = Theme.of(context);
     final _mediaQuery = MediaQuery.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
-        ),
-        title: Padding(
-          padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 50,
-                    child: FlatButton(
-                      child: Icon(Icons.account_circle,
-                          color: const Color(0xff707070)),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => loginPage()));
-                      },
-                    ),
-                  ),
-                  Container(
-                    width: 50,
-                    child: FlatButton(
-                      child: Icon(Icons.shopping_cart,
-                          color: const Color(0xff707070)),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: 30),
-                child: Text(
-                  "insert logo here",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: _mediaQuery.textScaleFactor * 15,
-                  ),
-                ),
-              ),
-              Container(
-                width: 50,
-                child: FlatButton(
-                  child: Icon(Icons.menu, color: const Color(0xff707070)),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => profilePage(),
-                      ),
-                    );
-                  },
-                ),
-              )
-            ],
-          ),
-        ),
-        centerTitle: true,
-        shadowColor: Colors.white,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            PageRouteBuilder(
-              opaque: false,
-              pageBuilder: (_, __, ___) => SearchScreen(),
-            ),
-          );
-        },
-        backgroundColor: const Color(0xffD17A17),
-        child: Icon(
-          Icons.search_rounded,
-        ),
-      ),
-      body: SizedBox(
+    return
+        // Scaffold(
+        // appBar: AppBar(
+        //   backgroundColor: Colors.white,
+        //   iconTheme: IconThemeData(
+        //     color: Colors.black, //change your color here
+        //   ),
+        //   title: Padding(
+        //     padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+        //     child: Row(
+        //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //       children: [
+        //         Row(
+        //           mainAxisAlignment: MainAxisAlignment.start,
+        //           children: [
+        //             Container(
+        //               width: 50,
+        //               child: FlatButton(
+        //                 child: Icon(Icons.account_circle,
+        //                     color: const Color(0xff707070)),
+        //                 onPressed: () {
+        //                   Navigator.of(context).push(MaterialPageRoute(
+        //                       builder: (context) => loginPage()));
+        //                 },
+        //               ),
+        //             ),
+        //             Container(
+        //               width: 50,
+        //               child: FlatButton(
+        //                 child: Icon(Icons.shopping_cart,
+        //                     color: const Color(0xff707070)),
+        //                 onPressed: () {},
+        //               ),
+        //             ),
+        //           ],
+        //         ),
+        //         Padding(
+        //           padding: EdgeInsets.only(right: 30),
+        //           child: Text(
+        //             "insert logo here",
+        //             style: TextStyle(
+        //               color: Colors.black,
+        //               fontSize: _mediaQuery.textScaleFactor * 15,
+        //             ),
+        //           ),
+        //         ),
+        //         Container(
+        //           width: 50,
+        //           child: FlatButton(
+        //             child: Icon(Icons.menu, color: const Color(0xff707070)),
+        //             onPressed: () {
+        //               Navigator.of(context).push(
+        //                 MaterialPageRoute(
+        //                   builder: (context) => profilePage(),
+        //                 ),
+        //               );
+        //             },
+        //           ),
+        //         )
+        //       ],
+        //     ),
+        //   ),
+        //   centerTitle: true,
+        //   shadowColor: Colors.white,
+        // ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     Navigator.of(context).push(
+        //       PageRouteBuilder(
+        //         opaque: false,
+        //         pageBuilder: (_, __, ___) => SearchScreen(),
+        //       ),
+        //     );
+        //   },
+        //   backgroundColor: const Color(0xffD17A17),
+        //   child: Icon(
+        //     Icons.search_rounded,
+        //   ),
+        // ),
+        // body:
+        Stack(children: [
+      SizedBox(
         height: MediaQuery.of(context).size.height - 100,
         child: ListView(
           children: <Widget>[
@@ -318,7 +319,27 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+      Positioned(
+        bottom: 20,
+        right: 20,
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              PageRouteBuilder(
+                opaque: false,
+                pageBuilder: (_, __, ___) => SearchScreen(),
+              ),
+            );
+          },
+          backgroundColor: const Color(0xffD17A17),
+          child: Icon(
+            Icons.search_rounded,
+            color: Colors.black,
+          ),
+        ),
+      ),
+    ]);
+    // );
   }
 }
 
