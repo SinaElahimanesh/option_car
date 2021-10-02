@@ -1,10 +1,11 @@
 class Category {
-  late String name;
-  late String imageURL;
+  String name;
+  String imageURL;
+  String description;
 
   Category({
     required this.name,
-    required this.imageURL
+    required this.imageURL,
+    required this.description,
   });
-
 }

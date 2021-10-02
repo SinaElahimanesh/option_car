@@ -9,18 +9,26 @@ class OptionProvider with ChangeNotifier {
     Category(
       name: 'شیشه (عادی و دودی)',
       imageURL: 'assets/images/categories/Glass.svg',
+      description:
+          'امروزه بسیاری از خودرو های از این قابلیت بهره میبرند. یکی از مهم ترین قابلیت های این خودرو در هم آپشن نهفته است. زیرا شما نمیدانید که چقدر مهم است.',
     ),
     Category(
       name: 'کف پوش',
       imageURL: 'assets/images/categories/Kafi.svg',
+      description:
+          'امروزه بسیاری از خودرو های از این قابلیت بهره میبرند. یکی از مهم ترین قابلیت های این خودرو در هم آپشن نهفته است. زیرا شما نمیدانید که چقدر مهم است.',
     ),
     Category(
       name: 'دوربین',
       imageURL: 'assets/images/categories/lens.svg',
+      description:
+          'امروزه بسیاری از خودرو های از این قابلیت بهره میبرند. یکی از مهم ترین قابلیت های این خودرو در هم آپشن نهفته است. زیرا شما نمیدانید که چقدر مهم است.',
     ),
     Category(
       name: 'گیربکس اتوماتیک',
       imageURL: 'assets/images/categories/gear-shift.svg',
+      description:
+          'امروزه بسیاری از خودرو های از این قابلیت بهره میبرند. یکی از مهم ترین قابلیت های این خودرو در هم آپشن نهفته است. زیرا شما نمیدانید که چقدر مهم است.',
     ),
   ];
 

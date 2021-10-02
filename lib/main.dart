@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:option_car/screens/drawer_screen.dart';
-import 'package:option_car/screens/search_screen.dart';
 import 'package:provider/provider.dart';
 
 import './providers/option_provider.dart';
@@ -27,7 +26,7 @@ class App extends StatelessWidget {
         theme: ThemeData(
           primaryColor: Color(0xffdb8c1c),
           accentColor: Color(0xfff05e1d),
-          shadowColor: Color(0xff00a86c),
+          shadowColor: Color(0xff00f59c),
           cardColor: Color(0xffeaeaea),
           hintColor: Color(0xfff52d00),
           highlightColor: Color(0xffc4c4c4),

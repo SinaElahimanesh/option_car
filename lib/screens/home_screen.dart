@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:option_car/screens/drawer_screen.dart';
 import 'package:provider/provider.dart';
 
+import './category_screen.dart';
+import './drawer_screen.dart';
 import '../models/category.dart';
 import './product_screen.dart';
 import '../widgets/persian_text.dart';
-import '../login.dart';
-import '../profileMenu.dart';
 import '../providers/option_provider.dart';
 import '../widgets/carItem.dart';
 import '../widgets/optionsCard.dart';
 import './search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  void _goToCategoryPage(Category category, BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => DrawerScreen(
+          body: CategoryScreen(category: category),
+          appBarBack: true,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final _provider = Provider.of<OptionProvider>(context);
@@ -99,250 +109,260 @@ class HomeScreen extends StatelessWidget {
         //   ),
         // ),
         // body:
-        Stack(children: [
-      SizedBox(
-        height: MediaQuery.of(context).size.height - 100,
-        child: ListView(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.fromLTRB(0, 0, 20, 20),
-              child: Text(
-                'پیشنهاد های ویژه',
-                style: TextStyle(
-                  fontFamily: 'vazir',
-                  fontSize: 17.0,
-                  fontWeight: FontWeight.w500,
-                  color: const Color(0xff6a6a6a),
-                ),
-                textAlign: TextAlign.end,
-              ),
-            ),
-            optionsCarousel(
-              onViewMore: () {},
-              items: <Widget>[
-                SizedBox(
-                  width: 20,
-                ),
-                OptionCard(
-                  option: _provider.options[0],
-                  onTapped: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => DrawerScreen(
-                          body: ProductScreen(),
-                          appBarBack: true,
-                        ),
-                      ),
-                    );
-                  },
-                  imgWidth: 80,
-                  theme: _theme,
-                  mediaQuery: _mediaQuery,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                OptionCard(
-                  option: _provider.options[1],
-                  onTapped: () {},
-                  imgWidth: 75,
-                  theme: _theme,
-                  mediaQuery: _mediaQuery,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                OptionCard(
-                  option: _provider.options[2],
-                  onTapped: () {},
-                  imgWidth: 110,
-                  theme: _theme,
-                  mediaQuery: _mediaQuery,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                OptionCard(
-                  option: _provider.options[3],
-                  onTapped: () {},
-                  imgWidth: 60,
-                  theme: _theme,
-                  mediaQuery: _mediaQuery,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-              ],
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(0, 0, 20, 20),
-              child: Text(
-                'محبوب ترین دسته ها',
-                style: TextStyle(
-                  fontFamily: 'vazir',
-                  fontSize: 17.0,
-                  fontWeight: FontWeight.w500,
-                  color: const Color(0xff6a6a6a),
-                ),
-                textAlign: TextAlign.end,
-              ),
-            ),
-            // SizedBox(
-            //   height: 130,
-            //   child: Column(children: [
-            //     Row(
-            //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //       children: [
-            //         optionItem(_provider.categories[0],
-            //             onTapped: () {}, onLike: () {}, imgWidth: 40),
-            //         optionItem(_provider.categories[1],
-            //             onTapped: () {}, imgWidth: 250, onLike: () {})
-            //       ],
-            //     ),
-            //     Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
-            //     Row(
-            //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //       children: [
-            //         optionItem(_provider.categories[2],
-            //             onTapped: () {}, imgWidth: 200, onLike: () {}),
-            //         optionItem(_provider.categories[3],
-            //             onTapped: () {}, onLike: () {}, imgWidth: 40)
-            //       ],
-            //     )
-            //   ]),
-            // ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      PopularCategory(
-                        category: _provider.categories[0],
-                        theme: _theme,
-                        mediaQuery: _mediaQuery,
-                      ),
-                      PopularCategory(
-                        category: _provider.categories[1],
-                        theme: _theme,
-                        mediaQuery: _mediaQuery,
-                      ),
-                    ],
+        Stack(
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height - 100,
+          child: ListView(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 0, 20, 20),
+                child: Text(
+                  'پیشنهاد های ویژه',
+                  style: TextStyle(
+                    fontFamily: 'vazir',
+                    fontSize: 17.0,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(0xff6a6a6a),
                   ),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      PopularCategory(
-                        category: _provider.categories[2],
-                        theme: _theme,
-                        mediaQuery: _mediaQuery,
-                      ),
-                      PopularCategory(
-                        category: _provider.categories[3],
-                        theme: _theme,
-                        mediaQuery: _mediaQuery,
-                      ),
-                    ],
+                  textAlign: TextAlign.end,
+                ),
+              ),
+              optionsCarousel(
+                onViewMore: () {},
+                items: <Widget>[
+                  SizedBox(
+                    width: 20,
+                  ),
+                  OptionCard(
+                    option: _provider.options[0],
+                    onTapped: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => DrawerScreen(
+                            body: ProductScreen(),
+                            appBarBack: true,
+                          ),
+                        ),
+                      );
+                    },
+                    imgWidth: 80,
+                    theme: _theme,
+                    mediaQuery: _mediaQuery,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  OptionCard(
+                    option: _provider.options[1],
+                    onTapped: () {},
+                    imgWidth: 75,
+                    theme: _theme,
+                    mediaQuery: _mediaQuery,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  OptionCard(
+                    option: _provider.options[2],
+                    onTapped: () {},
+                    imgWidth: 110,
+                    theme: _theme,
+                    mediaQuery: _mediaQuery,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  OptionCard(
+                    option: _provider.options[3],
+                    onTapped: () {},
+                    imgWidth: 60,
+                    theme: _theme,
+                    mediaQuery: _mediaQuery,
+                  ),
+                  SizedBox(
+                    width: 20,
                   ),
                 ],
               ),
-            ),
-            Container(
-              child: Divider(
-                color: const Color(0xffe5e2e2),
-                height: 50,
-                indent: 250,
-                thickness: 1.8,
-              ),
-              margin: const EdgeInsets.only(left: 10.0, right: 20.0),
-              width: 20.0,
-              height: 50,
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-              child: Text(
-                'خودروی خود را انتخاب کنید',
-                style: TextStyle(
-                  fontFamily: 'vazir',
-                  fontSize: 17.0,
-                  fontWeight: FontWeight.w500,
-                  color: const Color(0xff6a6a6a),
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 0, 20, 20),
+                child: Text(
+                  'محبوب ترین دسته ها',
+                  style: TextStyle(
+                    fontFamily: 'vazir',
+                    fontSize: 17.0,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(0xff6a6a6a),
+                  ),
+                  textAlign: TextAlign.end,
                 ),
-                textAlign: TextAlign.end,
               ),
-            ),
-            carsCarousel(
-                'گروه ایران خودرو', 'assets/images/cars/iran_khodro.png',
+              // SizedBox(
+              //   height: 130,
+              //   child: Column(children: [
+              //     Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //       children: [
+              //         optionItem(_provider.categories[0],
+              //             onTapped: () {}, onLike: () {}, imgWidth: 40),
+              //         optionItem(_provider.categories[1],
+              //             onTapped: () {}, imgWidth: 250, onLike: () {})
+              //       ],
+              //     ),
+              //     Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
+              //     Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //       children: [
+              //         optionItem(_provider.categories[2],
+              //             onTapped: () {}, imgWidth: 200, onLike: () {}),
+              //         optionItem(_provider.categories[3],
+              //             onTapped: () {}, onLike: () {}, imgWidth: 40)
+              //       ],
+              //     )
+              //   ]),
+              // ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        PopularCategory(
+                          category: _provider.categories[0],
+                          theme: _theme,
+                          mediaQuery: _mediaQuery,
+                          onTap: () => _goToCategoryPage(
+                              _provider.categories[0], context),
+                        ),
+                        PopularCategory(
+                          category: _provider.categories[1],
+                          theme: _theme,
+                          mediaQuery: _mediaQuery,
+                          onTap: () => _goToCategoryPage(
+                              _provider.categories[1], context),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        PopularCategory(
+                          category: _provider.categories[2],
+                          theme: _theme,
+                          mediaQuery: _mediaQuery,
+                          onTap: () => _goToCategoryPage(
+                              _provider.categories[2], context),
+                        ),
+                        PopularCategory(
+                          category: _provider.categories[3],
+                          theme: _theme,
+                          mediaQuery: _mediaQuery,
+                          onTap: () => _goToCategoryPage(
+                              _provider.categories[3], context),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                child: Divider(
+                  color: const Color(0xffe5e2e2),
+                  height: 50,
+                  indent: 250,
+                  thickness: 1.8,
+                ),
+                margin: const EdgeInsets.only(left: 10.0, right: 20.0),
+                width: 20.0,
+                height: 50,
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                child: Text(
+                  'خودروی خود را انتخاب کنید',
+                  style: TextStyle(
+                    fontFamily: 'vazir',
+                    fontSize: 17.0,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(0xff6a6a6a),
+                  ),
+                  textAlign: TextAlign.end,
+                ),
+              ),
+              carsCarousel(
+                  'گروه ایران خودرو', 'assets/images/cars/iran_khodro.png',
+                  onViewMore: () {},
+                  items: <Widget>[
+                    carItem(_provider.cars1[0],
+                        onTapped: () {}, onLike: () {}, imgWidth: 80),
+                    carItem(_provider.cars1[1],
+                        onTapped: () {}, onLike: () {}, imgWidth: 75),
+                    carItem(_provider.cars1[2],
+                        onTapped: () {}, imgWidth: 110, onLike: () {}),
+                    carItem(_provider.cars1[3],
+                        onTapped: () {}, onLike: () {}, imgWidth: 60),
+                  ]),
+              Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
+              carsCarousel(
+                'گروه سایپا',
+                'assets/images/cars/saipa.png',
                 onViewMore: () {},
                 items: <Widget>[
-                  carItem(_provider.cars1[0],
-                      onTapped: () {}, onLike: () {}, imgWidth: 80),
-                  carItem(_provider.cars1[1],
-                      onTapped: () {}, onLike: () {}, imgWidth: 75),
-                  carItem(_provider.cars1[2],
-                      onTapped: () {}, imgWidth: 110, onLike: () {}),
-                  carItem(_provider.cars1[3],
-                      onTapped: () {}, onLike: () {}, imgWidth: 60),
-                ]),
-            Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
-            carsCarousel(
-              'گروه سایپا',
-              'assets/images/cars/saipa.png',
-              onViewMore: () {},
-              items: <Widget>[
-                carItem(
-                  _provider.cars2[0],
-                  onTapped: () {},
-                  onLike: () {},
-                  imgWidth: 80,
-                ),
-                carItem(
-                  _provider.cars2[1],
-                  onTapped: () {},
-                  onLike: () {},
-                  imgWidth: 75,
-                ),
-                carItem(
-                  _provider.cars2[2],
-                  onTapped: () {},
-                  imgWidth: 110,
-                  onLike: () {},
-                ),
-                carItem(
-                  _provider.cars2[3],
-                  onTapped: () {},
-                  onLike: () {},
-                  imgWidth: 60,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-      Positioned(
-        bottom: 20,
-        right: 20,
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              PageRouteBuilder(
-                opaque: false,
-                pageBuilder: (_, __, ___) => SearchScreen(),
+                  carItem(
+                    _provider.cars2[0],
+                    onTapped: () {},
+                    onLike: () {},
+                    imgWidth: 80,
+                  ),
+                  carItem(
+                    _provider.cars2[1],
+                    onTapped: () {},
+                    onLike: () {},
+                    imgWidth: 75,
+                  ),
+                  carItem(
+                    _provider.cars2[2],
+                    onTapped: () {},
+                    imgWidth: 110,
+                    onLike: () {},
+                  ),
+                  carItem(
+                    _provider.cars2[3],
+                    onTapped: () {},
+                    onLike: () {},
+                    imgWidth: 60,
+                  ),
+                ],
               ),
-            );
-          },
-          backgroundColor: const Color(0xffD17A17),
-          child: Icon(
-            Icons.search_rounded,
-            color: Colors.black,
+            ],
           ),
         ),
-      ),
-    ]);
+        Positioned(
+          bottom: 20,
+          right: 20,
+          child: FloatingActionButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                PageRouteBuilder(
+                  opaque: false,
+                  pageBuilder: (_, __, ___) => SearchScreen(),
+                ),
+              );
+            },
+            backgroundColor: const Color(0xffD17A17),
+            child: Icon(
+              Icons.search_rounded,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ],
+    );
     // );
   }
 }
@@ -494,40 +514,45 @@ class PopularCategory extends StatelessWidget {
   final Category category;
   final ThemeData theme;
   final MediaQueryData mediaQuery;
+  final VoidCallback onTap;
   const PopularCategory({
     Key? key,
     required this.category,
     required this.theme,
     required this.mediaQuery,
+    required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: mediaQuery.size.width * 0.45,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(
-          10,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: mediaQuery.size.width * 0.45,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(
+            10,
+          ),
+          color: theme.primaryColor,
         ),
-        color: theme.primaryColor,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 12.5,
-          horizontal: 5,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(),
-            PersianText(category.name),
-            SvgPicture.asset(
-              category.imageURL,
-              color: Colors.black,
-              height: 18,
-              width: 18,
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 12.5,
+            horizontal: 5,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(),
+              PersianText(category.name),
+              SvgPicture.asset(
+                category.imageURL,
+                color: Colors.black,
+                height: 18,
+                width: 18,
+              ),
+            ],
+          ),
         ),
       ),
     );
