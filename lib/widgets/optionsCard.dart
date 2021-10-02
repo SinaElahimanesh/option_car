@@ -100,9 +100,10 @@ class OptionCard extends StatelessWidget {
                         Container(
                           height: 100,
                           child: Padding(
-                              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                              child: Image.asset(option.imageURL,
-                                  width: _mediaQuery.size.width * 0.35)),
+                            padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                            child: Image.asset(option.imageURL,
+                                width: _mediaQuery.size.width * 0.35),
+                          ),
                         ),
                         Text(
                           option.name,
@@ -134,7 +135,8 @@ class OptionCard extends StatelessWidget {
                                               fontWeight: FontWeight.bold,
                                               fontFamily: 'vazir')),
                                       Text(
-                                        option.lastPrice.toString(),
+                                        intl.NumberFormat.decimalPattern()
+                                            .format(option.lastPrice),
                                         style: TextStyle(
                                           decoration:
                                               TextDecoration.lineThrough,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
+import './cart_screen.dart';
 import '../login.dart';
 import './drawer_menu.dart';
 
@@ -33,8 +34,6 @@ class DrawerScreen extends StatelessWidget {
                   icon: Icon(Icons.arrow_back_rounded),
                 )
               : null,
-          // trailing: Text("asdf"),
-          // isTitleCenter: true,
           slideDirection: SlideDirection.RIGHT_TO_LEFT,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,7 +64,13 @@ class DrawerScreen extends StatelessWidget {
                         Icons.shopping_cart,
                         color: const Color(0xff707070),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => CartScreen(),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],

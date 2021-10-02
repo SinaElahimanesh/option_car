@@ -182,7 +182,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                   ),
                                   selected: selected[i],
                                   backgroundColor: Colors.white,
-                                  selectedColor: _theme.shadowColor,
+                                  selectedColor: Color(0xff00f59c),
                                   side: !selected[i]
                                       ? BorderSide(
                                           width: 0.1,
@@ -261,7 +261,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                   ),
                                   selected: selected[i],
                                   backgroundColor: Colors.white,
-                                  selectedColor: _theme.shadowColor,
+                                  selectedColor: Color(0xff00f59c),
                                   side: !selected[i]
                                       ? BorderSide(
                                           width: 0.1,
